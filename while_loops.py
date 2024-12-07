@@ -1,39 +1,44 @@
 import random
 import sys
 
-# let's play a guessing game just to improve what we learn
+# Let's play a guessing game to practice what we've learned
 
 print(" ------------------------------------")
 print("|    Welcome to Guess Game Play 🎮   |")
 print(" ------------------------------------")
 print(" -----> Please Guess a number <------")
 
-# store the data from user
-guess = input("The number: ")
+# Generate a random number
+min_size = 1
+max_size = 100  # Limiting the range for a practical game
+random_number = random.randint(min_size, max_size)
 
-# check the data is an integer or is a string, actualy the input it's returns a string but we can check it if if the input is a number or something else
-if guess.isdigit():
-    max_size = sys.maxsize
-    min_size = -sys.maxsize - 1
-    #  if you want to Win in this game you should be a legend hahahahahahahahahahahahahahaha 😈
-    ranndom = random.randint(min_size, max_size)
-    counter = 0
-    many_try = 0
-    while counter <= 2:
-        if guess == ranndom:
-            print("🥳 OWWW WHAT A LEGEND YOU ARE 🔥🎇")
-        else:
-            print("Ochhhii Are you lost baby??😍\n")
-            guess_two = input("Try again 😘: ")
-            if guess_two == ranndom:
-                print("🥳 OWWW WHAT A LEGEND YOU ARE 🔥🎇")
-            many_try += 1
-            counter += 1
-        print("====> " + str(counter))
-        if many_try > 2:
-            print("Oooh Please don't CRY 🥺")
-            print("Good luck next TIME HAHAHAH 🤡")
-            break
-else:
-    print("\033[31mPlease Enter a Digit\033[0m")
+# Allow the user 3 attempts to guess the number
+attempts = 3
+
+while attempts > 0:
+    guess = input(f"You have {attempts} attempt(s) left. Guess a number: ")
+
+    # Check if the input is a valid digit
+    if not guess.isdigit():
+        print("\033[31mPlease enter a valid number!\033[0m")
+        continue  # Skip to the next iteration
     
+    # Convert the guess to an integer
+    guess = int(guess)
+    
+    # Check the user's guess
+    if guess == random_number:
+        print("🥳 OWWW WHAT A LEGEND YOU ARE 🔥🎇")
+        break
+    else:
+        print("Oops! Wrong guess. Try again.\n")
+    
+    # Decrement the number of attempts
+    attempts -= 1
+
+# If the user runs out of attempts
+if attempts == 0:
+    print("Oooh Please don't cry 🥺")
+    print(f"The correct number was {random_number}. Good luck next time! 🤡")
+
