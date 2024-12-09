@@ -1,5 +1,6 @@
 import time
 import os
+import threading
 
 RED = "\033[31m"
 GREEN = "\033[32m"
@@ -40,10 +41,13 @@ def car_animation():
     frames = ["🚗💨     ", " 🚗💨   ", "   🚗💨 ", "    🚗💨     ", "      🚗💨   ", "       🚗💨 ", "        🚗💨", "         🚗💨   ", "           🚗💨 ", "            🚗💨", "              🚗💨  ", "                  🚗💨 "]
     while car_moving:
             for frame in frames:
+                if not car_moving:
+                    break
                 print(frame, end="\r", flush=True)
                 time.sleep(0.3)
 # game state 
 car_moving = False
+animation_thread = None
 
 while True:
     command = input(">> ")
@@ -51,9 +55,13 @@ while True:
     cmnd = command.strip().lower()
     if (cmnd == "quit"):
         print(GREEN + "Proccess finished with exit code 0" + RESET)
+        car_moving = False
+        if animation_thread:
+            # wait the animation thread to finish
+            animation_thread.join()
         break
 
-    if cmnd not in commands:
+    if cmnd not in commands and cmnd != "help":
         print(RED + "Uknown Command Please enter 'start', 'stop' or 'quit', You can see Help Manual 'help'." + RESET)
         continue
     if (cmnd == "start"):
@@ -63,7 +71,8 @@ while True:
             print("Car Started... 🚗💨")
             car_moving = True
             clear_console()
-            car_animation()
+            animation_thread = threading.Thread(target=car_animation)
+            animation_thread.start()
     elif cmnd == "stop":
         if not car_moving:
             print(YELLOW + "The car is already stopped!" + RESET)
