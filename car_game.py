@@ -43,7 +43,8 @@ def car_animation():
             for frame in frames:
                 if not car_moving:
                     break
-                print(frame, end="\r", flush=True)
+                # move cursor to row 5 and display the frame
+                print(f"\033[5;0H{frame}\033[K", end="", flush=True)
                 time.sleep(0.3)
 # game state 
 car_moving = False
@@ -71,7 +72,7 @@ while True:
             print("Car Started... 🚗💨")
             car_moving = True
             clear_console()
-            animation_thread = threading.Thread(target=car_animation)
+            animation_thread = threading.Thread(target=car_animation) # pass function reference
             animation_thread.start()
     elif cmnd == "stop":
         if not car_moving:
