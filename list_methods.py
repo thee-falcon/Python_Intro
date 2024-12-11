@@ -22,3 +22,21 @@ print(numbers.count(1))
 print("sort the list")
 numbers.sort()
 print(numbers)
+
+
+# Problem solving time, let's solve a simple Problem:
+# Write a program to remove the duplicate in a list
+
+print("=============Problem Solving:==============\n")
+nums = [2, 2, 4, 6 , 3, 4, 6, 1]
+#       0  1  2  3  4  5  6  7  8  9  10 11 12
+
+nb = []
+
+for nm in nums:
+    dupli = nb.count(nm)
+    # if nm not in nb => this is nother method to solve this problem
+    if dupli < 1:
+        nb.append(nm)
+
+print(nb)
