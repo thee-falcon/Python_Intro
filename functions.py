@@ -4,5 +4,5 @@ def display_message_to_user(firs_name, last_name):
     print(f"Hi dear user: {firs_name} {last_name} <3")
 
 print("Start")
-display_message_to_user("Omar", "Makran")
+display_message_to_user("Omar", last_name="Makran")
 print("Finish!")
