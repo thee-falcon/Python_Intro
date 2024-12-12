@@ -50,7 +50,7 @@ print(MAGENTA + "\nConverting from Digits to Words..." + RESET)
 # convert each digit to its corresponding word
 output = []
 for digit in phone_from_user:
-    output.append(numbers[digit])
+    output.append(numbers.get(digit))
 
 # join the words with spaces and print the result
 print(YELLOW + "✅ " + " ".join(output) + RESET)
