@@ -1,0 +1,1 @@
+# A function is a block of code which only runs when it us called. You can pass data, known as parameters, into a function.
