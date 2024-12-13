@@ -12,7 +12,10 @@ try:
     income = 20000
     risk = income / age
     print(age)
-except ZeroDivisionError:
+except ZeroDivisionError as ERROR:
     print(YELLOW + "Please the Age cannot be 0." + RESET)
+    print(RED + str(ERROR) + RESET)
+    print(CYAN + str(type(ERROR)) +RESET)
+
 except ValueError:
     print(YELLOW + "INVALID VALUE, Please Enter a Digit" + RESET)
