@@ -1,13 +1,16 @@
-class Mammal:
-    def eat():
+# parent, base Class
+class Animal:
+    def eat(self):
         print("eat")
-    
-    def walk():
+
+# child, subclass
+class Mammal(Animal):
+    def walk(self):
         print("walk")
 
-class Fish:
-    def eat():
-        print("eat")
-    
-    def swim():
+class Fish(Animal):
+    def swim(self):
         print("swim")
+
+fish = Fish()
+fish.eat()
