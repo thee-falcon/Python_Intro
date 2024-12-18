@@ -1,5 +1,8 @@
 # parent, base Class
 class Animal:
+    def __init__(self) -> None:
+        self.age = 1
+
     def eat(self):
         print("eat")
 
@@ -14,3 +17,4 @@ class Fish(Animal):
 
 fish = Fish()
 fish.eat()
+print(fish.age)
