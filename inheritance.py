@@ -24,3 +24,33 @@ print(fish.age)
 
 print(isinstance(fish, object)) # will print: True
 print(issubclass(Mammal, object)) # will print also: True
+
+
+##############################################################################
+###################### A Good Example of inheritance #########################
+##############################################################################
+
+class   InvalidOperationsError(Exception):
+    pass
+
+class Stream:
+    def __init__(self) -> None:
+        self.opend = False
+
+    def open(self):
+        if (self.open):
+            raise IndentationError("Stream is already opend")
+        self.open = True
+
+    def close(self):
+        if not (self.open):
+            raise InvalidOperationsError("Sream is already closed")
+        self.open = False
+
+class   FileStream(Stream):
+    def read(self):
+        print("Reading DATA from File")
+
+class   NetworkStream(Stream):
+    def read(self):
+        print("Reding DATA from Network.")
