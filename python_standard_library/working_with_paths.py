@@ -10,4 +10,4 @@ print(path.suffix) # this will print the directory of the __init__ file
 print(path.parent) # this will print the parent of the file
 
 path = path.with_suffix(".txt") # just we present the path, we did not change the file extension name.
-print(path)
+print(path) # print the represent path: __init__.txt
