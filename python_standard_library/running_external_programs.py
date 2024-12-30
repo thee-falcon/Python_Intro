@@ -5,7 +5,7 @@
 import subprocess
 
 try:
-   complited =  subprocess.run(["ls", "-l"],
+   complited =  subprocess.run(["python3", "other.py"],
                                capture_output=True,
                                text=True # to remove the 'b' prefex in stdout
                                )
