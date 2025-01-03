@@ -1,9 +1,10 @@
 import requests
+import config
 
 url = "https://docs.developer.yelp.com/"
-api_key = "you can find one in yelp.com when you register"
+
 headers = {
-    "Autorization": "Bearer " + api_key
+    "Autorization": "Bearer " + config.api_key
 }
 params = {
     "term": "Barber",
